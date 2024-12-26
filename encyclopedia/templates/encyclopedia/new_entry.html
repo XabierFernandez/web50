@@ -1,0 +1,30 @@
+<!-- templates/encyclopedia/new_page.html -->
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Create new page entry
+{% endblock %}
+
+{% block body %}
+<h2>Create new page entry</h2>
+<form action="{% url 'new_entry' %}" method="post">
+    {% csrf_token %}
+
+    <!-- Title Field -->
+    <div>
+        <label>Title:</label>
+        <br>
+        <input type="text" name="title" value="{{ title|default_if_none:'' }}" required>
+    </div>
+
+    <!-- Content Field -->
+    <div>
+        <label>Content:</label>
+        <br>
+        <textarea class="textarea-new"  name="content" required>{{ content|default_if_none:'' }}</textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success">Save changes</button>
+</form>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}Search Results{% endblock %}
+{% block body %}
+    <h1>Searched text "{{ search_text }}"</h1>
+    {{ content|safe }}
+{% endblock %}
